@@ -9,7 +9,7 @@ public class Files {
     ArrayList<File> folders = new ArrayList<>();
 
     public ArrayList<File> prepareFiles(){
-        
+
         folders.add(new File("C:\\Study\\3course_2sem\\Parallel\\course\\files\\test_neg"));
         folders.add(new File("C:\\Study\\3course_2sem\\Parallel\\course\\files\\test_pos"));
         folders.add(new File("C:\\Study\\3course_2sem\\Parallel\\course\\files\\train_neg"));

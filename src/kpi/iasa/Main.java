@@ -1,8 +1,12 @@
 package kpi.iasa;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        ArrayList<File> files = new Files().prepareFiles();
+
     }
 }
