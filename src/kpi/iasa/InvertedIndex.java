@@ -26,7 +26,7 @@ public class InvertedIndex extends Thread {
                 BufferedReader file = new BufferedReader(new FileReader(files.get(index)));
 
                 ArrayList<String> content = new ArrayList<>();
-                String str = file.readLine().replaceAll("[^a-zA-Z ]", "").toLowerCase();
+                String str = file.readLine().replaceAll("[^a-zA-Z ]", "").toLowerCase().trim();
                 Collections.addAll(content, str.split("\\s+"));
 
                 for (String item : content){
@@ -40,5 +40,10 @@ public class InvertedIndex extends Thread {
             }
             index++;
         }
+        System.out.println("Inverted index created!");
+    }
+
+    public HashMap<String, HashSet<File>> getInvertedIndex() {
+        return invertedIndex;
     }
 }
