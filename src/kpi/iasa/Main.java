@@ -10,7 +10,6 @@ public class Main {
     static ArrayList<File> files = new Files().prepareFiles();
     public static int THREAD_NUM = 4;
 
-
     public static void main(String[] args) throws InterruptedException {
 
         InvertedIndex[] threadArray = new InvertedIndex[THREAD_NUM];
@@ -22,8 +21,8 @@ public class Main {
             threadArray[num] = new InvertedIndex(files,
                     files.size()/THREAD_NUM * num,
                     num == (THREAD_NUM - 1)
-                    ? files.size()
-                    : files.size() / THREAD_NUM * (num + 1));
+                            ? files.size()
+                            : files.size() / THREAD_NUM * (num + 1));
             threadArray[num].start();
         }
 
@@ -42,7 +41,7 @@ public class Main {
                                 fileValueV1.addAll(v2);
                                 return fileValueV1;
                             }
-                            ));
+                    ));
         }
 
         long FINISH = System.currentTimeMillis();
