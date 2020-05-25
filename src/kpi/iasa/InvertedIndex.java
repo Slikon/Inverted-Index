@@ -43,7 +43,7 @@ public class InvertedIndex extends Thread {
             }
             index++;
         }
-        
+
     }
 
 

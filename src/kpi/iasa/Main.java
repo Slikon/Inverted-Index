@@ -8,7 +8,7 @@ import java.util.HashSet;
 public class Main {
 
     static ArrayList<File> files = new Files().prepareFiles();
-    public static int THREAD_NUM = 2;
+    public static int THREAD_NUM = 100;
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -18,13 +18,13 @@ public class Main {
 
         long START = System.currentTimeMillis();
         //starting threads
-        for (int numThread = 0; numThread < THREAD_NUM; numThread++){
-            threadArray[numThread] = new InvertedIndex(files,
-                    files.size()/THREAD_NUM * numThread,
-                    numThread == (THREAD_NUM - 1)
+        for (int num = 0; num < THREAD_NUM; num++){
+            threadArray[num] = new InvertedIndex(files,
+                    files.size()/THREAD_NUM * num,
+                    num == (THREAD_NUM - 1)
                     ? files.size()
-                    : files.size() / THREAD_NUM * (numThread + 1));
-            threadArray[numThread].start();
+                    : files.size() / THREAD_NUM * (num + 1));
+            threadArray[num].start();
         }
 
         //joining threads
