@@ -18,6 +18,9 @@ public class InvertedIndex extends Thread {
         this.startingFile = startingFile;
         this.lastFile = lastFile;
     }
+    public HashMap<String, HashSet<File>> getInvertedIndex() {
+        return invertedIndex;
+    }
 
     @Override
     public void run() {
@@ -40,10 +43,8 @@ public class InvertedIndex extends Thread {
             }
             index++;
         }
-        System.out.println("Inverted index created!");
+        
     }
 
-    public HashMap<String, HashSet<File>> getInvertedIndex() {
-        return invertedIndex;
-    }
+
 }
