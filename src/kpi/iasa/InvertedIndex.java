@@ -4,33 +4,25 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class InvertedIndex extends Thread {
 
-    public ArrayList<File> files;
+    public List<File> files;
     public HashMap<String, HashSet<File>> invertedIndex = new HashMap<>();
-    public int startingFile;
-    public int lastFile;
-
-    public InvertedIndex(ArrayList<File> files, int startingFile, int lastFile){
-        this.files = files;
-        this.startingFile = startingFile;
-        this.lastFile = lastFile;
-    }
     public HashMap<String, HashSet<File>> getInvertedIndex() {
         return invertedIndex;
     }
 
+    public InvertedIndex(List<File> files){
+        this.files = files;
+    }
+
     @Override
     public void run() {
-        for (int index = startingFile; index < lastFile; index++){
+        for (File eachFile : files){
             try {
-                BufferedReader file = new BufferedReader(new FileReader(files.get(index)));
-
+                BufferedReader file = new BufferedReader(new FileReader(eachFile));
                 ArrayList<String> content = new ArrayList<>();
                 String str = file.readLine().replaceAll("[^a-zA-Z ]", "").toLowerCase().trim();
                 Collections.addAll(content, str.split("\\s+"));
@@ -39,12 +31,11 @@ public class InvertedIndex extends Thread {
                     if (!invertedIndex.containsKey(item)){
                         invertedIndex.put(item, new HashSet<File>());
                     }
-                    invertedIndex.get(item).add(files.get(index).getAbsoluteFile());
+                    invertedIndex.get(item).add(eachFile.getAbsoluteFile());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            index++;
         }
 
     }
