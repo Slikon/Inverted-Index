@@ -1,4 +1,4 @@
-# parallel_computing_course_work
+# Inverted Index
 This projects represents the process of creating inverted index program from different .txt files.
 ## Local installation
 **(IMPORTANT!)** To install this project on your local device, you need to have [Java 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html) (or higher) to be already installed and [added to PATH](https://javatutorial.net/set-java-home-windows-10).
